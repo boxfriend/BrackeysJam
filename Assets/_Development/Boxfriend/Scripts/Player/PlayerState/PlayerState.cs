@@ -27,7 +27,19 @@ namespace Boxfriend.Player
 
         public virtual void FixedUpdate(Vector2 moveDirection)
         {
-            _rb.velocity = moveDirection * PlayerController.Instance.Speed;
+            Vector2 playerVelocity = moveDirection * PlayerController.Instance.Speed;
+
+            if (!(((int)playerVelocity.x ^ (int)_rb.velocity.x) <= 0) && Mathf.Abs(_rb.velocity.x) >= PlayerController.Instance.Speed)
+            {
+                playerVelocity.x = 0;
+            }
+            if (!(((int)playerVelocity.y ^ (int)_rb.velocity.y) <= 0) && Mathf.Abs(_rb.velocity.y) >= PlayerController.Instance.MaxSpeed)
+            {
+                playerVelocity.y = 0;
+            }
+
+            _rb.AddForce(playerVelocity);
+            //_rb.velocity = moveDirection * PlayerController.Instance.Speed;
         }
         #endregion
 

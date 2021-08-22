@@ -65,6 +65,11 @@ namespace Boxfriend.Player
         {
             get { return _currSpeed; }
         }
+
+        public int MaxSpeed
+        {
+            get { return _maxSpeed; }
+        }
         #endregion
 
         #region MonoBehaviours
@@ -86,6 +91,14 @@ namespace Boxfriend.Player
             _currHealth = _startHealth;
             _currDamage = _startDamage;
             _currSpeed = _startSpeed;
+        }
+
+        void OnTriggerEnter2D(Collider2D col)
+        {
+            if(col is IDestructable)
+            {
+
+            }
         }
 
         #endregion
