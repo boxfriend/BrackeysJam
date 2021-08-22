@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Boxfriend
 {
@@ -13,8 +14,12 @@ namespace Boxfriend
         [SerializeField, Range(0, 100), Tooltip("Start health for the obstacle")]
         private int _startHealth;
 
+        [SerializeField, Tooltip("The healthbar attached to the obstacle, must be Fill type")]
+        private Image _healthBar;
+
 
         private int _currHealth;
+        
         #endregion
 
         #region Properties
@@ -29,12 +34,17 @@ namespace Boxfriend
         #region IDestructable
         public void Kill()
         {
-            return;
+            Debug.Log("Object would have died here");
         }
 
         public void TakeDamage(int damage)
         {
-            return;
+            _currHealth -= damage;
+
+            if(_currHealth <= 0)
+            {
+                Kill();
+            }
         }
         #endregion
 
@@ -48,7 +58,24 @@ namespace Boxfriend
         // Update is called once per frame
         void Update()
         {
+            _healthBar.fillAmount = (float)_currHealth / _startHealth;
+        }
 
+        void OnTriggerEnter2D(Collider2D col)
+        {
+            
+            if (col.CompareTag("Player"))
+            {
+                //_healthBar.gameObject.SetActive(true);
+            }
+        }
+
+        void OnTriggerExit2D(Collider2D col)
+        {
+            if (col.CompareTag("Player"))
+            {
+                //_healthBar.gameObject.SetActive(false);
+            }
         }
         #endregion
     }

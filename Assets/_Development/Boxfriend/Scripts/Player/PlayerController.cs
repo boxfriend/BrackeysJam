@@ -95,10 +95,13 @@ namespace Boxfriend.Player
 
         void OnTriggerEnter2D(Collider2D col)
         {
-            if(col is IDestructable)
+            var dest = col.GetComponent<IDestructable>(); //Checks if object is destructible then applies necessary damage
+            if (dest != null)
             {
-
+                dest.TakeDamage(Damage);
             }
+
+            Debug.Log("test");
         }
 
         #endregion

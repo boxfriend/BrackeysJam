@@ -8,7 +8,7 @@ namespace Boxfriend.Player
     /// Manages Player State
     /// Will automatically call PlayerState methods
     /// </summary>
-    public class PlayerStateManager : MonoBehaviour
+    public abstract class PlayerStateManager : MonoBehaviour
     {
         protected PlayerState _state, _prevState;
         protected Vector2 _moveDirection;
@@ -52,6 +52,11 @@ namespace Boxfriend.Player
         {
             _state.FixedUpdate(_moveDirection);
         }
+
+        /*public virtual void OnTriggerEnter2D(Collider2D col)
+        {
+
+        }*/
 
         #endregion
     }
