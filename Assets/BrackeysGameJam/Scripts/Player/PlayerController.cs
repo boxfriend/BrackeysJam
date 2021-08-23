@@ -167,6 +167,7 @@ namespace Boxfriend.Player
             //TODO: implement death
             Debug.Log("Ha u ded");
             SetState(new PlayerStateDead(_rb));
+            GameManager.instance.GameOver();
         }
         #endregion
 

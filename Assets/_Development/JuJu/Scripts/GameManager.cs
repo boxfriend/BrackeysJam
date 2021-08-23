@@ -21,13 +21,11 @@ public class GameManager : MonoBehaviour
     }
 
 
-public void EscapePress(InputAction.CallbackContext context) {
-    if(context.performed)
+public void EscapePress() { 
         if(!gameIsPaused){
             Pause();
         }
         else{Resume();}
-    
 }
 public void Pause(){
     gameIsPaused = true;
@@ -39,6 +37,7 @@ public void Pause(){
 
 public void Resume(){
     gameIsPaused = false;
+    PlayerController.Instance.PrevState();
     Time.timeScale = 1;
     SceneManager.UnloadSceneAsync("PauseMenu");
 }
@@ -64,12 +63,18 @@ public IEnumerator LoadLevel(int levelIndex){
     yield return new WaitForSeconds(0.3f);
     SceneManager.LoadScene(levelIndex);
 }
+#endregion
 
-public void Quit(){
-    Application.Quit();
-}
+#region GameOver
+
+public void GameOver(){
+    SceneManager.LoadSceneAsync("GameOver", LoadSceneMode.Additive);
 }
 
 #endregion
+}
+
+
+
 
 }
