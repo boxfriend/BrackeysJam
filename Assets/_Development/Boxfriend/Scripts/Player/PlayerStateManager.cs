@@ -48,10 +48,16 @@ namespace Boxfriend.Player
             _state.Update();
         }
 
-        void FixedUpdate()
+        private void FixedUpdate()
         {
             _state.FixedUpdate(_moveDirection);
         }
+
+        /*public virtual void OnTriggerEnter2D(Collider2D col)
+        {
+
+        }*/
+
         #endregion
     }
 }
