@@ -5,7 +5,8 @@ using UnityEngine.InputSystem;
 
 namespace Boxfriend.Player
 {
-    public class PlayerController : PlayerStateManager, IDestructable
+    //[RequireComponent(typeof(Rigidbody2D))]
+    public class PlayerController : PlayerStateManager, IDestructible
     {
         #region Fields
         /// <summary>
@@ -35,6 +36,9 @@ namespace Boxfriend.Player
         [SerializeField, Tooltip("Player's Rigidbody2D")]
         private Rigidbody2D _rb;
 
+        public Vector2 vel;
+        public float mag;
+
         //Non-Serialized Fields
         private int _currHealth, _currDamage, _currSpeed;
         #endregion
@@ -47,7 +51,7 @@ namespace Boxfriend.Player
         public int Health 
         { 
             get { return _currHealth; }
-            set { Debug.Log("Unable to set Health using property."); }
+            private set { return; }
         }
 
         /// <summary>
@@ -64,6 +68,7 @@ namespace Boxfriend.Player
         public int Speed
         {
             get { return _currSpeed; }
+            private set { _currSpeed = Mathf.Clamp(_currSpeed + value, 0, MaxSpeed); }
         }
 
         public int MaxSpeed
@@ -82,7 +87,7 @@ namespace Boxfriend.Player
 
             Instance = this;
 
-            SetState(new PlayerStateMove(_rb));
+            SetState(new PlayerStateBegin(_rb));
         }
 
         void Start()
@@ -95,13 +100,17 @@ namespace Boxfriend.Player
 
         void OnTriggerEnter2D(Collider2D col)
         {
-            var dest = col.GetComponent<IDestructable>(); //Checks if object is destructible then applies necessary damage
-            if (dest != null)
+            var destructible = col.GetComponent<IDestructible>(); //Checks if object is destructible then applies necessary damage
+            if (destructible != null)
             {
-                dest.TakeDamage(Damage);
+                destructible.TakeDamage(Damage);
             }
 
-            Debug.Log("test");
+            var interactable = col.GetComponent<IInteractable>();
+            if(interactable != null)
+            {
+                _currSpeed += interactable.SpeedChange;
+            }
         }
 
         #endregion
@@ -138,10 +147,13 @@ namespace Boxfriend.Player
             if(_state is PlayerStatePause)
             {
                 PrevState();
+                
+                Time.timeScale = 1;
                 Debug.Log("Player Unpause");
             } else
             {
                 SetState(new PlayerStatePause(_rb));
+                Time.timeScale = 0;
                 Debug.Log("Player Paused");
             }
         }
