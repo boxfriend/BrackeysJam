@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Boxfriend
 {
-    public class Obstacle : MonoBehaviour, IDestructable
+    public class Obstacle : MonoBehaviour, IDestructible
     {
 
         #region Fields
@@ -31,7 +31,7 @@ namespace Boxfriend
 
         #endregion
 
-        #region IDestructable
+        #region IDestructible
         public void Kill()
         {
             Debug.Log("Object would have died here");
