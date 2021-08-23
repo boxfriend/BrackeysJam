@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using JuJu;
 
 namespace Boxfriend.Player
 {
@@ -179,15 +180,27 @@ namespace Boxfriend.Player
         {
             if(_state is PlayerStatePause)
             {
-                PrevState();
-                
-                Time.timeScale = 1;
-                Debug.Log("Player Unpause");
+                try
+                {
+                    GameManager.instance.Resume();
+                } catch (System.NullReferenceException)
+                {
+                    PrevState();
+                    Time.timeScale = 1;
+                    Debug.LogWarning("Game Manager not active in hierarchy");
+                }
             } else
             {
                 SetState(new PlayerStatePause(_rb));
-                Time.timeScale = 0;
-                Debug.Log("Player Paused");
+                try
+                {
+                    GameManager.instance.Pause();
+                }
+                catch (System.NullReferenceException)
+                {
+                    Time.timeScale = 1;
+                    Debug.LogWarning("Game Manager not active in hierarchy");
+                }
             }
         }
         #endregion
