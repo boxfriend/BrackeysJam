@@ -135,7 +135,7 @@ namespace Boxfriend.Player
             base.Update();
             _speedometer.fillAmount = _rb.velocity.magnitude / MaxSpeed;
 
-            var angle = Mathf.Atan2(_rb.velocity.y, _rb.velocity.x) * Mathf.Rad2Deg + 90;
+            var angle = Mathf.Atan2(_rb.velocity.y, _rb.velocity.x) * Mathf.Rad2Deg - 90;
             //_windsArrow.rotation = angle;
             _windsArrow.transform.rotation = Quaternion.Euler(0, 0, angle);
 
