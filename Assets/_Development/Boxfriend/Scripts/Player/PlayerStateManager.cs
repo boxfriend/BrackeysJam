@@ -43,21 +43,15 @@ namespace Boxfriend.Player
 
         #region MonoBehaviours
 
-        void Update()
+        protected virtual void Update()
         {
             _state.Update();
         }
 
-        private void FixedUpdate()
+        void FixedUpdate()
         {
             _state.FixedUpdate(_moveDirection);
         }
-
-        /*public virtual void OnTriggerEnter2D(Collider2D col)
-        {
-
-        }*/
-
         #endregion
     }
 }
