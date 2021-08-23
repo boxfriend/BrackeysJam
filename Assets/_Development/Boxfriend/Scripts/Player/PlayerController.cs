@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace Boxfriend.Player
 {
@@ -17,11 +18,11 @@ namespace Boxfriend.Player
         public static PlayerController Instance;
 
         [Header("Player Stats"), Space(5)]
-        [SerializeField, Range(0,100), Tooltip("Start health for the player")]
+        [SerializeField, Range(1,100), Tooltip("Start health for the player")]
         private int _startHealth;
-        [SerializeField, Range(0, 100), Tooltip("Start Damage for the player")]
+        [SerializeField, Range(1, 100), Tooltip("Start Damage for the player")]
         private int _startDamage;
-        [SerializeField, Range(0, 100), Tooltip("Start Speed for the player")]
+        [SerializeField, Range(3, 10), Tooltip("Start Speed for the player")]
         private int _startSpeed;
 
         [Header("Max Stats"), Space(5)]
@@ -29,15 +30,17 @@ namespace Boxfriend.Player
         private int _maxHealth;
         [SerializeField, Range(0, 100), Tooltip("Maximum Damage for the player")]
         private int _maxDamage;
-        [SerializeField, Range(0, 100), Tooltip("Maximum Speed for the player")]
+        [SerializeField, Range(0, 20), Tooltip("Maximum Speed for the player")]
         private int _maxSpeed;
 
         [Header("Player Components"), Space(5)]
         [SerializeField, Tooltip("Player's Rigidbody2D")]
         private Rigidbody2D _rb;
+        [SerializeField, Tooltip("Arrow's Rigidbody2D")]
+        private GameObject _windsArrow;
+        [SerializeField]
+        private Image _speedometer;
 
-        public Vector2 vel;
-        public float mag;
 
         //Non-Serialized Fields
         private int _currHealth, _currDamage, _currSpeed;
@@ -46,24 +49,25 @@ namespace Boxfriend.Player
         #region Properties
         /// <summary>
         /// Get Player's current health.
-        /// Cannot set health this way.
         /// </summary>
         public int Health 
         { 
             get { return _currHealth; }
-            private set { return; }
+            private set { _currHealth = Mathf.Clamp(_currHealth + value, 0, _maxHealth); }
         }
 
         /// <summary>
-        /// Get Player's current damage.
+        /// Get Player's current attack damage.
         /// </summary>
         public int Damage 
         { 
             get { return _currDamage; }
+            private set { _currDamage = Mathf.Clamp(_currDamage + value, 0, _maxDamage); }
         }
 
         /// <summary>
-        /// Get Player's current speed.
+        /// Get Player's current movement speed.
+        /// This is applied force per frame, not velocity.
         /// </summary>
         public int Speed
         {
@@ -71,9 +75,20 @@ namespace Boxfriend.Player
             private set { _currSpeed = Mathf.Clamp(_currSpeed + value, 0, MaxSpeed); }
         }
 
+        /// <summary>
+        /// The maximum magnitude of the player's velocity.
+        /// </summary>
         public int MaxSpeed
         {
             get { return _maxSpeed; }
+        }
+
+        /// <summary>
+        /// Get the player's Rigidbody2D Velocity
+        /// </summary>
+        public Vector2 Velocity
+        {
+            get { return _rb.velocity; }
         }
         #endregion
 
@@ -106,11 +121,29 @@ namespace Boxfriend.Player
                 destructible.TakeDamage(Damage);
             }
 
-            var interactable = col.GetComponent<IInteractable>();
+            var interactable = col.GetComponent<IInteractable>(); //Checks if 
             if(interactable != null)
             {
                 _currSpeed += interactable.SpeedChange;
+                Health = interactable.HealthChange;
+                Debug.Log(Health);
             }
+        }
+
+        protected override void Update()
+        {
+            base.Update();
+            _speedometer.fillAmount = _rb.velocity.magnitude / MaxSpeed;
+
+            var angle = Mathf.Atan2(_rb.velocity.y, _rb.velocity.x) * Mathf.Rad2Deg + 90;
+            //_windsArrow.rotation = angle;
+            _windsArrow.transform.rotation = Quaternion.Euler(0, 0, angle);
+
+            if (_currHealth <= 0)
+            {
+                Kill();
+            }
+
         }
 
         #endregion
@@ -122,17 +155,17 @@ namespace Boxfriend.Player
         /// <param name="damage">Int to subtract from Health</param>
         public void TakeDamage(int damage)
         {
-            _currHealth = Mathf.Clamp(_currHealth - damage, 0, _maxHealth); 
 
-            if(_currHealth <= 0)
-            {
-                Kill();
-            }
+            Health = damage;
+            Debug.Log(Health);
+            
         }
 
         public void Kill()
         {
             //TODO: implement death
+            Debug.Log("Ha u ded");
+            SetState(new PlayerStateDead(_rb));
         }
         #endregion
 

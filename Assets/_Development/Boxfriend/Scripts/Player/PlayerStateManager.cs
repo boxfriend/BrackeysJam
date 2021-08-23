@@ -43,7 +43,7 @@ namespace Boxfriend.Player
 
         #region MonoBehaviours
 
-        void Update()
+        protected virtual void Update()
         {
             _state.Update();
         }

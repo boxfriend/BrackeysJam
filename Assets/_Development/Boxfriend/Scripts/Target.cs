@@ -14,11 +14,14 @@ namespace Boxfriend
         [SerializeField, Range(0, 100), Tooltip("Start health for the obstacle")]
         private int _startHealth;
 
-        [SerializeField, Tooltip("The healthbar attached to the obstacle, must be Fill type")]
-        private Image _healthBar;
-
+        [SerializeField]
+        private ObstacleSprite _sprites;
 
         private int _currHealth;
+
+        //Components
+        private SpriteRenderer _spr;
+        private BoxCollider2D _col;
         
         #endregion
 
@@ -34,12 +37,13 @@ namespace Boxfriend
         #region IDestructable
         public void Kill()
         {
-            Debug.Log("Object would have died here");
+            _col.enabled = false;
         }
 
         public void TakeDamage(int damage)
         {
             _currHealth -= damage;
+
 
             if(_currHealth <= 0)
             {
@@ -49,6 +53,12 @@ namespace Boxfriend
         #endregion
 
         #region MonoBehaviours
+
+        private void Awake()
+        {
+            _spr = GetComponent<SpriteRenderer>();
+            _col = GetComponent<BoxCollider2D>();
+        }
         // Start is called before the first frame update
         void Start()
         {
@@ -58,7 +68,25 @@ namespace Boxfriend
         // Update is called once per frame
         void Update()
         {
-            _healthBar.fillAmount = (float)_currHealth / _startHealth;
+            //_healthBar.fillAmount = (float)_currHealth / _startHealth;
+
+            if(_currHealth <= 0)
+            {
+                _spr.sprite = _sprites.sprites[4];
+            } else if ((float)_currHealth/_startHealth < 0.5)
+            {
+                _spr.sprite = _sprites.sprites[3];
+            } else if ((float)_currHealth / _startHealth < 0.75)
+            {
+                _spr.sprite = _sprites.sprites[2];
+            }
+            else if ((float)_currHealth / _startHealth != 1)
+            {
+                _spr.sprite = _sprites.sprites[1];
+            } else 
+            {
+                _spr.sprite = _sprites.sprites[0];
+            }
         }
 
         void OnTriggerEnter2D(Collider2D col)
