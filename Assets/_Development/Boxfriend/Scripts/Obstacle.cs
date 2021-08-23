@@ -1,82 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Boxfriend
 {
-    public class Obstacle : MonoBehaviour, IDestructible
+    public class Obstacle : MonoBehaviour, IInteractable
     {
-
-        #region Fields
-
-        [Header("Obstacle Stats"), Space(5)]
-        [SerializeField, Range(0, 100), Tooltip("Start health for the obstacle")]
-        private int _startHealth;
-
-        [SerializeField, Tooltip("The healthbar attached to the obstacle, must be Fill type")]
-        private Image _healthBar;
+        [SerializeField,Range(-10,10),Tooltip("Change in player speed when interacting with object")]
+        private int _speedChange;
+        [SerializeField, Range(-10, 10), Tooltip("Change in player health when interacting with object")]
+        private int _healthChange;
 
 
-        private int _currHealth;
+
+        public int SpeedChange { get { return _speedChange; } }
+
+        public int HealthChange { get { return _healthChange; } }
+
         
-        #endregion
-
-        #region Properties
-        public int Health 
-        {
-            get { return _currHealth; }
-            set { } 
-        }
-
-        #endregion
-
-        #region IDestructible
-        public void Kill()
-        {
-            Debug.Log("Object would have died here");
-        }
-
-        public void TakeDamage(int damage)
-        {
-            _currHealth -= damage;
-
-            if(_currHealth <= 0)
-            {
-                Kill();
-            }
-        }
-        #endregion
-
-        #region MonoBehaviours
-        // Start is called before the first frame update
-        void Start()
-        {
-            _currHealth = _startHealth;
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            _healthBar.fillAmount = (float)_currHealth / _startHealth;
-        }
-
-        void OnTriggerEnter2D(Collider2D col)
-        {
-            
-            if (col.CompareTag("Player"))
-            {
-                //_healthBar.gameObject.SetActive(true);
-            }
-        }
-
-        void OnTriggerExit2D(Collider2D col)
-        {
-            if (col.CompareTag("Player"))
-            {
-                //_healthBar.gameObject.SetActive(false);
-            }
-        }
-        #endregion
     }
 }

@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace Boxfriend
 {
-    interface IDestructable
+    interface IDestructible
     {
 
-        int Health { get; set; }
+        int Health { get; /*set; */}
         void TakeDamage(int damage);
 
         void Kill();
