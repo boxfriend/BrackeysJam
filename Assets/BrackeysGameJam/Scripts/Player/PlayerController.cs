@@ -134,6 +134,8 @@ namespace Boxfriend.Player
         protected override void Update()
         {
             base.Update();
+
+            transform.localScale = Vector3.one * ((float)_currHealth / _startHealth);
             _speedometer.fillAmount = _rb.velocity.magnitude / MaxSpeed;
 
             var angle = Mathf.Atan2(_rb.velocity.y, _rb.velocity.x) * Mathf.Rad2Deg - 90;
@@ -142,7 +144,7 @@ namespace Boxfriend.Player
 
             if (_currHealth <= 0)
             {
-                Kill();
+                StartCoroutine(Kill());
             }
 
         }
@@ -162,12 +164,10 @@ namespace Boxfriend.Player
             
         }
 
-        public void Kill()
+        public IEnumerator Kill()
         {
-            //TODO: implement death
-            Debug.Log("Ha u ded");
             SetState(new PlayerStateDead(_rb));
-            GameManager.instance.GameOver();
+            yield return null;
         }
         #endregion
 
@@ -179,30 +179,7 @@ namespace Boxfriend.Player
 
         void OnEscape()
         {
-            if(_state is PlayerStatePause)
-            {
-                try
-                {
-                    GameManager.instance.Resume();
-                } catch (System.NullReferenceException)
-                {
-                    PrevState();
-                    Time.timeScale = 1;
-                    Debug.LogWarning("Game Manager not active in hierarchy");
-                }
-            } else
-            {
-                SetState(new PlayerStatePause(_rb));
-                try
-                {
-                    GameManager.instance.Pause();
-                }
-                catch (System.NullReferenceException)
-                {
-                    Time.timeScale = 1;
-                    Debug.LogWarning("Game Manager not active in hierarchy");
-                }
-            }
+            _state.OnEscape();
         }
         #endregion
     }

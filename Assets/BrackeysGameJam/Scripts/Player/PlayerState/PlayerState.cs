@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using JuJu;
 
 namespace Boxfriend.Player
 {
@@ -54,6 +55,20 @@ namespace Boxfriend.Player
             yield break;
         }
         #endregion
+
+        public virtual void OnEscape()
+        {
+            PlayerController.Instance.SetState(new PlayerStatePause(_rb));
+            try
+            {
+                GameManager.instance.Pause();
+            }
+            catch (System.NullReferenceException)
+            {
+                Time.timeScale = 1;
+                Debug.LogWarning("Game Manager not active in hierarchy");
+            }
+        }
 
     }
 }

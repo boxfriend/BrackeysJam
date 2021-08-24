@@ -10,7 +10,7 @@ namespace Boxfriend
         int Health { get; /*set; */}
         void TakeDamage(int damage);
 
-        void Kill();
+        IEnumerator Kill();
         
     }
 }

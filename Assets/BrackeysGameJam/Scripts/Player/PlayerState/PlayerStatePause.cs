@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using JuJu;
 
 namespace Boxfriend.Player
 {
@@ -35,6 +36,20 @@ namespace Boxfriend.Player
         {
             _rb.velocity = _prevVelocity;
             return base.ExitState();
+        }
+
+        public override void OnEscape()
+        {
+            try
+            {
+                GameManager.instance.Resume();
+            }
+            catch (System.NullReferenceException)
+            {
+                PlayerController.Instance.PrevState();
+                Time.timeScale = 1;
+                Debug.LogWarning("Game Manager not active in hierarchy");
+            }
         }
     }
 }

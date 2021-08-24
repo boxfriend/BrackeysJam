@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using JuJu;
 
 namespace Boxfriend.Player
 {
@@ -24,10 +25,23 @@ namespace Boxfriend.Player
 
         public override IEnumerator StartState()
         {
+            try
+            {
+                GameManager.instance.GameOver();
+            }
+            catch (System.NullReferenceException)
+            {
+                Debug.LogWarning("Game Manager not active in hierarchy");
+            }
             return base.StartState();
         }
 
         public override void Update()
+        {
+            return;
+        }
+
+        public override void OnEscape()
         {
             return;
         }
