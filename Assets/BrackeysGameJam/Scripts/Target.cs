@@ -10,12 +10,15 @@ namespace Boxfriend
 
         #region Fields
 
-        [Header("Obstacle Stats"), Space(5)]
-        [SerializeField, Range(0, 100), Tooltip("Start health for the obstacle")]
+        [Header("Target Stats"), Space(5)]
+        [SerializeField, Range(0, 100), Tooltip("Start health for the target")]
         private int _startHealth;
 
         [SerializeField]
         private ObstacleSprite _sprites;
+
+        [SerializeField,Tooltip("Prefab that will be dropped on target death")]
+        private GameObject _pickupDrop;
 
         private int _currHealth;
 
@@ -35,9 +38,16 @@ namespace Boxfriend
         #endregion
 
         #region IDestructable
-        public void Kill()
+        public IEnumerator Kill()
         {
             _col.enabled = false;
+
+            yield return new WaitForSeconds(0.5f);
+            if(_pickupDrop != null)
+            {
+                GameObject pickup = Instantiate(_pickupDrop, transform.position, Quaternion.identity);
+                pickup.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-1, 1), Random.Range(-1, 1)), ForceMode2D.Impulse);
+            }
         }
 
         public void TakeDamage(int damage)
@@ -47,7 +57,7 @@ namespace Boxfriend
 
             if(_currHealth <= 0)
             {
-                Kill();
+                StartCoroutine(Kill());
             }
         }
         #endregion
