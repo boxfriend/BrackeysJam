@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     bool gameIsPaused = false;
 
+    public Animator transition;
+
     private void Awake() {
         if(instance == null){
         instance = this;
@@ -60,7 +62,7 @@ public void PlayLevel1(){
 }
 
 public IEnumerator LoadLevel(int levelIndex){
-    yield return new WaitForSeconds(0.3f);
+    yield return new WaitForSeconds(1);
     SceneManager.LoadScene(levelIndex);
 }
 #endregion
