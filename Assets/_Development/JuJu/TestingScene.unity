@@ -32034,6 +32034,8 @@ GameObject:
   - component: {fileID: 1749134703}
   - component: {fileID: 1749134705}
   - component: {fileID: 1749134704}
+  - component: {fileID: 1749134707}
+  - component: {fileID: 1749134706}
   m_Layer: 0
   m_Name: Water
   m_TagString: Untagged
@@ -32736,6 +32738,36 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1749134706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749134702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a681c0e848e00474fa2413080523ac20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speedChange: -1
+  _healthChange: -2
+--- !u!19719996 &1749134707
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749134702}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0.00001
 --- !u!1 &1755397019
 GameObject:
   m_ObjectHideFlags: 0
