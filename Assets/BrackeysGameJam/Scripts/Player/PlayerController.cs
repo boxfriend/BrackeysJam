@@ -39,12 +39,14 @@ namespace Boxfriend.Player
         private Rigidbody2D _rb;
         [SerializeField, Tooltip("Arrow's Rigidbody2D")]
         private GameObject _windsArrow;
-        [SerializeField]
+        [SerializeField,Tooltip("Speedometer image")]
         private Image _speedometer;
+        [SerializeField, Tooltip("Score Text object")]
+        private Text _scoreText;
 
 
         //Non-Serialized Fields
-        private int _currHealth, _currDamage, _currSpeed;
+        private int _currHealth, _currDamage, _currSpeed, _score = 0;
         #endregion
 
         #region Properties
@@ -91,6 +93,15 @@ namespace Boxfriend.Player
         {
             get { return _rb.velocity; }
         }
+
+        /// <summary>
+        /// Get the player's Rigidbody2D Velocity
+        /// </summary>
+        public int Score
+        {
+            get { return _score; }
+            private set { _score += value; }
+        }
         #endregion
 
         #region MonoBehaviours
@@ -129,6 +140,12 @@ namespace Boxfriend.Player
                 Health = interactable.HealthChange;
                 Debug.Log(Health);
             }
+
+            var scorable = col.GetComponent<IScorable>();
+            if (scorable != null)
+            {
+                Score = scorable.Score;
+            }
         }
 
         void OnCollisionEnter2D(Collision2D col)
@@ -154,6 +171,7 @@ namespace Boxfriend.Player
             transform.localScale = Vector3.one * ((float)Health / _startHealth) * 1.5f; //Sets player scale based on percentage of health compared to start health
 
             _speedometer.fillAmount = _rb.velocity.magnitude / MaxSpeed;
+            _scoreText.text = Score.ToString();
 
             var angle = Mathf.Atan2(_rb.velocity.y, _rb.velocity.x) * Mathf.Rad2Deg - 90;
             _windsArrow.transform.rotation = Quaternion.Euler(0, 0, angle);

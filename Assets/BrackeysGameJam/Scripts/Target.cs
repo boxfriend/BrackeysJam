@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Boxfriend.Player;
 
 namespace Boxfriend
 {
-    public class Target : MonoBehaviour, IDestructible
+    public class Target : MonoBehaviour, IDestructible, IScorable
     {
 
         #region Fields
@@ -20,6 +21,8 @@ namespace Boxfriend
         [SerializeField,Tooltip("Prefab that will be dropped on target death")]
         private GameObject _pickupDrop;
 
+        [SerializeField, Range(0, 5), Tooltip("Number of points to give to player on hit.")]
+        private int _score;
         private int _currHealth;
 
         //Components
@@ -33,6 +36,20 @@ namespace Boxfriend
         {
             get { return _currHealth; }
             set { } 
+        }
+
+        public int Score 
+        { 
+            get 
+            { 
+                if(PlayerController.Instance.Velocity.magnitude > PlayerController.Instance.MaxSpeed * 0.9f)
+                {
+                    return _score * 3;
+                } else
+                {
+                    return _score;
+                }
+            } 
         }
 
         #endregion
