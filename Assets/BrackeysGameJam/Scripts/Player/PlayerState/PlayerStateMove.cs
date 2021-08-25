@@ -24,7 +24,7 @@ namespace Boxfriend.Player
             {
                 Debug.Log("too slow!");
                 //PlayerController.Instance.SetState(new PlayerStatePause(_rb));
-                PlayerController.Instance.Kill();
+                PlayerController.Instance.Kill(true);
             }
         }
     }
