@@ -146,6 +146,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speedChange: 0
-  _healthChange: 5
+  _healthChange: 2
   _collider: {fileID: -8337264409543141831}
   _spriteRenderer: {fileID: 845442939291586111}

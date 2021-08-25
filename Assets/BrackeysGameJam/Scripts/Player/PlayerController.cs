@@ -122,10 +122,27 @@ namespace Boxfriend.Player
                 destructible.TakeDamage(Damage);
             }
 
-            var interactable = col.GetComponent<IInteractable>(); //Checks if 
+            var interactable = col.GetComponent<IInteractable>(); //Checks if object is interactable then applies speed and health changes to player
             if(interactable != null)
             {
-                _currSpeed += interactable.SpeedChange;
+                Speed = interactable.SpeedChange;
+                Health = interactable.HealthChange;
+                Debug.Log(Health);
+            }
+        }
+
+        void OnCollisionEnter2D(Collision2D col)
+        {
+            var destructible = col.gameObject.GetComponent<IDestructible>(); //Checks if object is destructible then applies necessary damage
+            if (destructible != null)
+            {
+                destructible.TakeDamage(Damage);
+            }
+
+            var interactable = col.gameObject.GetComponent<IInteractable>(); //Checks if object is interactable then applies speed and health changes to player
+            if (interactable != null)
+            {
+                Speed = interactable.SpeedChange;
                 Health = interactable.HealthChange;
                 Debug.Log(Health);
             }
@@ -134,18 +151,12 @@ namespace Boxfriend.Player
         protected override void Update()
         {
             base.Update();
+            transform.localScale = Vector3.one * ((float)Health / _startHealth) * 1.5f; //Sets player scale based on percentage of health compared to start health
 
-            transform.localScale = Vector3.one * ((float)_currHealth / _startHealth);
             _speedometer.fillAmount = _rb.velocity.magnitude / MaxSpeed;
 
             var angle = Mathf.Atan2(_rb.velocity.y, _rb.velocity.x) * Mathf.Rad2Deg - 90;
-            //_windsArrow.rotation = angle;
             _windsArrow.transform.rotation = Quaternion.Euler(0, 0, angle);
-
-            if (_currHealth <= 0)
-            {
-                StartCoroutine(Kill());
-            }
 
         }
 
@@ -162,14 +173,33 @@ namespace Boxfriend.Player
             Health = damage;
             Debug.Log(Health);
             
+            if (Health <= 0)
+            {
+                StartCoroutine(Kill());
+            }
+
         }
 
+
+        /// <summary>
+        /// Kills the player
+        /// </summary>
+        /// <returns></returns>
         public IEnumerator Kill()
         {
             SetState(new PlayerStateDead(_rb));
             yield return null;
         }
         #endregion
+
+        /// <summary>
+        /// Calls the Kill() coroutine. This is only to be used from non-MonoBehaviour scripts
+        /// </summary>
+        /// <param name="t"></param>
+        public void Kill(bool t)
+        {
+            StartCoroutine(Kill());
+        }
 
         #region Input
         void OnMove(InputValue value)
