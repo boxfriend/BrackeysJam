@@ -191,7 +191,7 @@ namespace Boxfriend.Player
             _windsArrow.transform.rotation = Quaternion.Euler(0, 0, angle);
 
             //Displays the speed on the speed text on the speedometer
-            _speedText.text = $"{(int)Velocity.magnitude * _speedAdjustment} m/h";
+            _speedText.text = $"{(int)(Velocity.magnitude * _speedAdjustment)} m/h";
         }
 
         #endregion
