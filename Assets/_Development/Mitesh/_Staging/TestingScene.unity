@@ -814,6 +814,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 45149327583967811, guid: a60cb008ad6379f468c89b5d4dadccb8, type: 3}
+      propertyPath: speedText
+      value: 
+      objectReference: {fileID: 543296259}
+    - target: {fileID: 45149327583967811, guid: a60cb008ad6379f468c89b5d4dadccb8, type: 3}
       propertyPath: _scoreText
       value: 
       objectReference: {fileID: 1577479880}
@@ -825,6 +829,10 @@ PrefabInstance:
       propertyPath: _speedometer
       value: 
       objectReference: {fileID: 1577479881}
+    - target: {fileID: 45149327583967811, guid: a60cb008ad6379f468c89b5d4dadccb8, type: 3}
+      propertyPath: speedAdjustion
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 559321120720628135, guid: a60cb008ad6379f468c89b5d4dadccb8, type: 3}
       propertyPath: m_Name
       value: Player
@@ -875,6 +883,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a60cb008ad6379f468c89b5d4dadccb8, type: 3}
+--- !u!114 &543296259 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7980248945873929989, guid: eae6816e1ea8fff408a990e8fc61decd, type: 3}
+  m_PrefabInstance: {fileID: 1577479879}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &550292180
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2255,6 +2274,14 @@ PrefabInstance:
     - target: {fileID: 6034889098815468968, guid: eae6816e1ea8fff408a990e8fc61decd, type: 3}
       propertyPath: m_Name
       value: HUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 9207005474383736807, guid: eae6816e1ea8fff408a990e8fc61decd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 358
+      objectReference: {fileID: 0}
+    - target: {fileID: 9207005474383736807, guid: eae6816e1ea8fff408a990e8fc61decd, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -250.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eae6816e1ea8fff408a990e8fc61decd, type: 3}
@@ -12680,7 +12707,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7299703, y: 1}
+    m_SensorSize: {x: 2.0457413, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -12799,7 +12826,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac147652d2d07e44eb289d0a78408546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transition: {fileID: 0}
 --- !u!4 &1992274184
 Transform:
   m_ObjectHideFlags: 0
