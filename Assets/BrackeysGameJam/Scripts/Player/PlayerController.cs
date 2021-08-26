@@ -47,10 +47,10 @@ namespace Boxfriend.Player
         private Text _scoreText;
         [SerializeField, Tooltip("Trail Renderer object")]
         private TrailRenderer _tr;
-        [SerializeField, Tooltip("Changes how quickly the speed on the speedometer changes")]
-        private float speedAdjustion = 1;
+        [SerializeField, Range(10,100),Tooltip("Changes how quickly the speed on the speedometer changes")]
+        private float _speedAdjustment;
         [SerializeField, Tooltip("The text for the speedometer speed display")]
-        private Text speedText;
+        private Text _speedText;
         //Non-Serialized Fields
         private int _currHealth, _currDamage, _currSpeed, _score = 0;
         #endregion
@@ -179,21 +179,19 @@ namespace Boxfriend.Player
         protected override void Update()
         {
             base.Update();
-            transform.localScale = Vector3.one * ((float)Health / _startHealth) * 1.5f; //Sets player scale based on percentage of health compared to start health
-            
+            //Sets player scale based on percentage of health compared to start health
+            transform.localScale = Vector3.one * ((float)Health / _startHealth) * 1.5f; 
             _tr.widthMultiplier = transform.localScale.x / 3;
 
             _speedometer.fillAmount = _rb.velocity.magnitude / MaxSpeed;
             _scoreText.text = Score.ToString();
 
+
             var angle = Mathf.Atan2(_rb.velocity.y, _rb.velocity.x) * Mathf.Rad2Deg - 90;
             _windsArrow.transform.rotation = Quaternion.Euler(0, 0, angle);
 
-            speed = Velocity.magnitude;
-
             //Displays the speed on the speed text on the speedometer
-            int displaySpeed = (int)(speed * speedAdjustion);
-            speedText.text = displaySpeed.ToString() + "m/h";
+            _speedText.text = $"{(int)Velocity.magnitude * _speedAdjustment} m/h";
         }
 
         #endregion
