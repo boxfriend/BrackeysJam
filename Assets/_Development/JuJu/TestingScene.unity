@@ -671,7 +671,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIManager
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8428261382105720323, guid: f96e0b70b150a2c42aa5a2164bf36d2b, type: 3}
+    - {fileID: 7000717183464355000, guid: f96e0b70b150a2c42aa5a2164bf36d2b, type: 3}
+    - {fileID: 7706923664490287356, guid: f96e0b70b150a2c42aa5a2164bf36d2b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f96e0b70b150a2c42aa5a2164bf36d2b, type: 3}
 --- !u!1001 &171602867
 PrefabInstance:
@@ -28617,7 +28620,7 @@ PrefabInstance:
     - target: {fileID: 7506117600193383258, guid: f62a077df9a36e54c9bb24de720dd0ec, type: 3}
       propertyPath: speedText
       value: 
-      objectReference: {fileID: 1075458733}
+      objectReference: {fileID: 0}
     - target: {fileID: 7506117600193383258, guid: f62a077df9a36e54c9bb24de720dd0ec, type: 3}
       propertyPath: _scoreText
       value: 
@@ -28847,17 +28850,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73f0d14cd25f5334b8d6075ffb321b9a, type: 3}
---- !u!114 &1075458733 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 447258247468134978, guid: f62a077df9a36e54c9bb24de720dd0ec, type: 3}
-  m_PrefabInstance: {fileID: 995608398}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1117798584
 GameObject:
   m_ObjectHideFlags: 0
