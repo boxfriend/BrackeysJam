@@ -34,6 +34,8 @@ namespace Boxfriend.Player
         [SerializeField, Range(0, 20), Tooltip("Maximum Speed for the player")]
         private int _maxSpeed;
 
+        public float speed;
+
         [Header("Player Components"), Space(5)]
         [SerializeField, Tooltip("Player's Rigidbody2D")]
         private Rigidbody2D _rb;
@@ -43,8 +45,12 @@ namespace Boxfriend.Player
         private Image _speedometer;
         [SerializeField, Tooltip("Score Text object")]
         private Text _scoreText;
-
-
+        [SerializeField, Tooltip("Trail Renderer object")]
+        private TrailRenderer _tr;
+        [SerializeField, Range(10,100),Tooltip("Changes how quickly the speed on the speedometer changes")]
+        private float _speedAdjustment;
+        [SerializeField, Tooltip("The text for the speedometer speed display")]
+        private Text _speedText;
         //Non-Serialized Fields
         private int _currHealth, _currDamage, _currSpeed, _score = 0;
         #endregion
@@ -127,6 +133,9 @@ namespace Boxfriend.Player
 
         void OnTriggerEnter2D(Collider2D col)
         {
+
+            
+
             var destructible = col.GetComponent<IDestructible>(); //Checks if object is destructible then applies necessary damage
             if (destructible != null)
             {
@@ -148,6 +157,8 @@ namespace Boxfriend.Player
             }
         }
 
+        
+
         void OnCollisionEnter2D(Collision2D col)
         {
             var destructible = col.gameObject.GetComponent<IDestructible>(); //Checks if object is destructible then applies necessary damage
@@ -168,14 +179,19 @@ namespace Boxfriend.Player
         protected override void Update()
         {
             base.Update();
-            transform.localScale = Vector3.one * ((float)Health / _startHealth) * 1.5f; //Sets player scale based on percentage of health compared to start health
+            //Sets player scale based on percentage of health compared to start health
+            transform.localScale = Vector3.one * ((float)Health / _startHealth) * 1.5f; 
+            _tr.widthMultiplier = transform.localScale.x / 3;
 
             _speedometer.fillAmount = _rb.velocity.magnitude / MaxSpeed;
             _scoreText.text = Score.ToString();
 
+
             var angle = Mathf.Atan2(_rb.velocity.y, _rb.velocity.x) * Mathf.Rad2Deg - 90;
             _windsArrow.transform.rotation = Quaternion.Euler(0, 0, angle);
 
+            //Displays the speed on the speed text on the speedometer
+            _speedText.text = $"{(int)Velocity.magnitude * _speedAdjustment} m/h";
         }
 
         #endregion

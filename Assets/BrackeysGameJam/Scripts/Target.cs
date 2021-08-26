@@ -19,7 +19,7 @@ namespace Boxfriend
         private ObstacleSprite _sprites;
 
         [SerializeField,Tooltip("Prefab that will be dropped on target death")]
-        private GameObject _pickupDrop;
+        private GameObject[] _pickupDrop;
 
         [SerializeField, Range(0, 5), Tooltip("Number of points to give to player on hit.")]
         private int _score;
@@ -62,8 +62,11 @@ namespace Boxfriend
             yield return new WaitForSeconds(0.5f);
             if(_pickupDrop != null)
             {
-                GameObject pickup = Instantiate(_pickupDrop, transform.position, Quaternion.identity);
-                pickup.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-1, 1), Random.Range(-1, 1)), ForceMode2D.Impulse);
+                foreach (GameObject p in _pickupDrop)
+                {
+                    GameObject pickup = Instantiate(p, transform.position, Quaternion.identity);
+                    pickup.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-1, 1), Random.Range(-1, 1)), ForceMode2D.Impulse);
+                }
             }
         }
 
