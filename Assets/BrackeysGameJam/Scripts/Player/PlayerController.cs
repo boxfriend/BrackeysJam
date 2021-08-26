@@ -47,6 +47,10 @@ namespace Boxfriend.Player
         private Text _scoreText;
         [SerializeField, Tooltip("Trail Renderer object")]
         private TrailRenderer _tr;
+        [SerializeField, Tooltip("Changes how quickly the speed on the speedometer changes")]
+        private float speedAdjustion = 1;
+        [SerializeField, Tooltip("The text for the speedometer speed display")]
+        private Text speedText;
         //Non-Serialized Fields
         private int _currHealth, _currDamage, _currSpeed, _score = 0;
         #endregion
@@ -186,6 +190,10 @@ namespace Boxfriend.Player
             _windsArrow.transform.rotation = Quaternion.Euler(0, 0, angle);
 
             speed = Velocity.magnitude;
+
+            //Displays the speed on the speed text on the speedometer
+            int displaySpeed = (int)(speed * speedAdjustion);
+            speedText.text = displaySpeed.ToString() + "m/h";
         }
 
         #endregion

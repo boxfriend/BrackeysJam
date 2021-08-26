@@ -12,8 +12,6 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     bool gameIsPaused = false;
 
-    public Animator transition;
-
     private void Awake() {
         if(instance == null){
         instance = this;
