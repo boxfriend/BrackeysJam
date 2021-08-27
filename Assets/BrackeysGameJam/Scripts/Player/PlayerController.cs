@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using TMPro;
 using JuJu;
 
 namespace Boxfriend.Player
@@ -50,7 +51,7 @@ namespace Boxfriend.Player
         [SerializeField, Range(10,100),Tooltip("Changes how quickly the speed on the speedometer changes")]
         private float _speedAdjustment;
         [SerializeField, Tooltip("The text for the speedometer speed display")]
-        private Text _speedText;
+        private TextMeshProUGUI _speedText;
         //Non-Serialized Fields
         private int _currHealth, _currDamage, _currSpeed, _score = 0;
         #endregion
