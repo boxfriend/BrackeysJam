@@ -29117,6 +29117,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2047604646}
     - target: {fileID: 7506117600193383258, guid: f62a077df9a36e54c9bb24de720dd0ec, type: 3}
+      propertyPath: debrisText
+      value: 
+      objectReference: {fileID: 1439834603}
+    - target: {fileID: 7506117600193383258, guid: f62a077df9a36e54c9bb24de720dd0ec, type: 3}
       propertyPath: timerCount
       value: 60
       objectReference: {fileID: 0}
@@ -32260,7 +32264,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fb0b6c6341a4f9d4682ef3578fa758cb, type: 2}
   m_sharedMaterial: {fileID: 5767294184573726138, guid: fb0b6c6341a4f9d4682ef3578fa758cb, type: 2}

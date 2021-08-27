@@ -56,10 +56,12 @@ namespace Boxfriend.Player
         private float timerCount = 60f;
         [SerializeField, Tooltip("The text for the timer")]
         private TextMeshProUGUI timerText;
+        [SerializeField, Tooltip("The text for the debris count")]
+        private TextMeshProUGUI debrisText;
         //Non-Serialized Fields
         private int _currHealth, _currDamage, _score = 0;
         private float _currSpeed;
-
+        private int debrisCount; //checks how many debris the player collected, increments when the player collects a debris prefab
         private bool timerIsStarted;
         #endregion
 
@@ -152,6 +154,11 @@ namespace Boxfriend.Player
             {
                 Speed = interactable.SpeedChange;
                 Health = interactable.HealthChange;
+                //checks wether the object is a collectable and then increments the debris count and updates the debris text
+                if(col.tag == "Collectable"){
+                debrisCount++;
+                debrisText.text = debrisCount.ToString();
+                }
                 Debug.Log(Health);
             }
 
