@@ -39,6 +39,15 @@ namespace JuJu{
             Application.Quit();
         }
 
+        public void GoToSettings(){
+            AudioManager.instance.PlaySound("UIEnter");
+            GameManager.instance.Settings();
+        }
+
+        public void PrevScene(){
+            AudioManager.instance.PlaySound("UIExit");
+            GameManager.instance.BackToPrevScene();
+        }
     }
 
 }

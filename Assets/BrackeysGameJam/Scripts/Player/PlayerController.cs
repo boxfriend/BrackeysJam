@@ -53,7 +53,8 @@ namespace Boxfriend.Player
         [SerializeField, Tooltip("The text for the speedometer speed display")]
         private TextMeshProUGUI _speedText;
         //Non-Serialized Fields
-        private int _currHealth, _currDamage, _currSpeed, _score = 0;
+        private int _currHealth, _currDamage, _score = 0;
+        private float _currSpeed;
         #endregion
 
         #region Properties
@@ -79,7 +80,7 @@ namespace Boxfriend.Player
         /// Get Player's current movement speed.
         /// This is applied force per frame, not velocity.
         /// </summary>
-        public int Speed
+        public float Speed
         {
             get { return _currSpeed; }
             private set { _currSpeed = Mathf.Clamp(_currSpeed + value, 0, MaxSpeed); }

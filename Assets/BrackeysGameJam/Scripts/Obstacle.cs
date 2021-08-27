@@ -13,7 +13,7 @@ namespace Boxfriend
 
 
 
-        public int SpeedChange { get { return _speedChange; } }
+        public float SpeedChange { get { return _speedChange; } }
 
         public int HealthChange { get { return _healthChange; } }
 
