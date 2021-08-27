@@ -198,6 +198,8 @@ namespace Boxfriend.Player
             //Displays the speed on the speed text on the speedometer
             _speedText.text = $"{(int)(Velocity.magnitude * _speedAdjustment)} m/h";
 
+    //please rewrite
+        #region rewrite
             if(_rb.velocity.magnitude >= 0.5f){
                 timerIsStarted = true;
             }
@@ -214,6 +216,7 @@ namespace Boxfriend.Player
                 GetComponent<PlayerController>().enabled = false;
             }
         }
+        #endregion
 
         #endregion
 

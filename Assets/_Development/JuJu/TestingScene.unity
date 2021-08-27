@@ -29118,7 +29118,7 @@ PrefabInstance:
       objectReference: {fileID: 2047604646}
     - target: {fileID: 7506117600193383258, guid: f62a077df9a36e54c9bb24de720dd0ec, type: 3}
       propertyPath: timerCount
-      value: 3
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 7506117600193383258, guid: f62a077df9a36e54c9bb24de720dd0ec, type: 3}
       propertyPath: speedAdjustion
