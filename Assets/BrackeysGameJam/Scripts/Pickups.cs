@@ -9,7 +9,7 @@ namespace Boxfriend
         #region Fields
         [Header("Stat Changes")]
         [SerializeField, Range(-10, 10), Tooltip("Int representing the speed gain/loss the player will receive on pickup")]
-        private int _speedChange;
+        private float _speedChange;
         [SerializeField, Range(-10, 10), Tooltip("Int representing the health gain/loss the player will receive on pickup")]
         private int _healthChange;
 
