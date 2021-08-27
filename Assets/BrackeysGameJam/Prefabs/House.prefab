@@ -129,8 +129,6 @@ MonoBehaviour:
   _score: 3
   _pickupDrop:
   - {fileID: 845442939291586108, guid: b03530a3528b63346afc23d5a829ddc5, type: 3}
-  - {fileID: 845442939291586108, guid: b03530a3528b63346afc23d5a829ddc5, type: 3}
-  - {fileID: 845442939291586108, guid: b03530a3528b63346afc23d5a829ddc5, type: 3}
   _spr: {fileID: 4612248250549619055}
   _col: {fileID: 4612248250549619054}
   _anim: {fileID: 2069120433789428293}
