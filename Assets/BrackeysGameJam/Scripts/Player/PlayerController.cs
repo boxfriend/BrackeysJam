@@ -52,9 +52,15 @@ namespace Boxfriend.Player
         private float _speedAdjustment;
         [SerializeField, Tooltip("The text for the speedometer speed display")]
         private TextMeshProUGUI _speedText;
+        [SerializeField, Tooltip("The amount of time the player has")]
+        private float timerCount = 60f;
+        [SerializeField, Tooltip("The text for the timer")]
+        private TextMeshProUGUI timerText;
         //Non-Serialized Fields
         private int _currHealth, _currDamage, _score = 0;
         private float _currSpeed;
+
+        private bool timerIsStarted;
         #endregion
 
         #region Properties
@@ -191,6 +197,22 @@ namespace Boxfriend.Player
 
             //Displays the speed on the speed text on the speedometer
             _speedText.text = $"{(int)(Velocity.magnitude * _speedAdjustment)} m/h";
+
+            if(_rb.velocity.magnitude >= 0.5f){
+                timerIsStarted = true;
+            }
+
+            if(timerIsStarted){
+            timerCount -= Time.deltaTime;
+            timerText.text = $"{(int)timerCount}";
+            }
+
+            if(timerCount <= 0){
+                //Time.timeScale = 0;
+                timerIsStarted = false;
+                GameManager.instance.GameOver();
+                GetComponent<PlayerController>().enabled = false;
+            }
         }
 
         #endregion
