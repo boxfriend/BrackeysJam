@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: WaterLeftTile
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: 21300000, guid: 93c30d713268d4a698e368a27e0d3466, type: 3}
+  - {fileID: 21300000, guid: 4205422e884b247c88636cdd39681d98, type: 3}
+  - {fileID: 21300000, guid: f3a179eb1e3b34c9facf149260382abc, type: 3}
+  - {fileID: 21300000, guid: 5d63ddc0900d7459195aead619782828, type: 3}
+  - {fileID: 21300000, guid: d0311d5617bf14a35835a1746b8c1184, type: 3}
+  - {fileID: 21300000, guid: 853f257703093481a8fba496f7924952, type: 3}
+  - {fileID: 21300000, guid: c723ed375a44d43a39084bb93ce47cc5, type: 3}
+  m_MinSpeed: 12
+  m_MaxSpeed: 12
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0

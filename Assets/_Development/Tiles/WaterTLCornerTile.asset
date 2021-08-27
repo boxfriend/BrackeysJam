@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: WaterTLCornerTile
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: 21300000, guid: 47c09d7d852274c708d25caa0a346370, type: 3}
+  - {fileID: 21300000, guid: 81880dfdcb15a4118acd6a39803f893b, type: 3}
+  - {fileID: 21300000, guid: cc4d0c6b037f54d04b6bf23f6cedd0f7, type: 3}
+  - {fileID: 21300000, guid: b633d2718bbb841c7ab0c9154250fd69, type: 3}
+  - {fileID: 21300000, guid: 8411c61edf9e7416187cec47b54b4245, type: 3}
+  - {fileID: 21300000, guid: e876fc210948f413599c778fd8a052bf, type: 3}
+  - {fileID: 21300000, guid: 02c7fe02ebb794d5ca56a720013f1294, type: 3}
+  m_MinSpeed: 12
+  m_MaxSpeed: 12
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
