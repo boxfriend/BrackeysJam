@@ -28,6 +28,7 @@ namespace Boxfriend
         //Components
         private SpriteRenderer _spr;
         private BoxCollider2D _col;
+        private Animator _anim;
         
         #endregion
 
@@ -74,7 +75,7 @@ namespace Boxfriend
         {
             _currHealth -= damage;
 
-
+            _anim.SetFloat("HealthPerc", (float)_currHealth / _startHealth);
             if(_currHealth <= 0)
             {
                 StartCoroutine(Kill());
@@ -88,36 +89,15 @@ namespace Boxfriend
         {
             _spr = GetComponent<SpriteRenderer>();
             _col = GetComponent<BoxCollider2D>();
+            _anim = GetComponent<Animator>();
         }
         // Start is called before the first frame update
         void Start()
         {
             _currHealth = _startHealth;
+            _anim.SetFloat("HealthPerc", 1);
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-            //_healthBar.fillAmount = (float)_currHealth / _startHealth;
-
-            if(_currHealth <= 0)
-            {
-                _spr.sprite = _sprites.sprites[4];
-            } else if ((float)_currHealth/_startHealth < 0.5)
-            {
-                _spr.sprite = _sprites.sprites[3];
-            } else if ((float)_currHealth / _startHealth < 0.75)
-            {
-                _spr.sprite = _sprites.sprites[2];
-            }
-            else if ((float)_currHealth / _startHealth != 1)
-            {
-                _spr.sprite = _sprites.sprites[1];
-            } else 
-            {
-                _spr.sprite = _sprites.sprites[0];
-            }
-        }
 
         void OnTriggerEnter2D(Collider2D col)
         {
