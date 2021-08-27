@@ -9,7 +9,6 @@ namespace JuJu{
     {
         public Animator transition;
 
-
         private void Start()
         {
             
@@ -20,16 +19,19 @@ namespace JuJu{
         }
 
         public void Restart(){
+            AudioManager.instance.PlaySound("UIEnter");
             GameManager.instance.Restart();
         }
 
         public void BackToMenu(){
             //transition.SetTrigger("Start");
+            AudioManager.instance.PlaySound("UIExit");
             GameManager.instance.BackToMainMenu();
         }
 
         public void PlayLevel(){
             transition.SetTrigger("Start");
+            AudioManager.instance.PlaySound("Start");
             GameManager.instance.PlayLevel1();
         }
 
@@ -37,6 +39,15 @@ namespace JuJu{
             Application.Quit();
         }
 
+        public void GoToSettings(){
+            AudioManager.instance.PlaySound("UIEnter");
+            GameManager.instance.Settings();
+        }
+
+        public void PrevScene(){
+            AudioManager.instance.PlaySound("UIExit");
+            GameManager.instance.BackToPrevScene();
+        }
     }
 
 }

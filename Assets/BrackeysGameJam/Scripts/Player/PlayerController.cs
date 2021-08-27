@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using TMPro;
 using JuJu;
 
 namespace Boxfriend.Player
@@ -50,9 +51,18 @@ namespace Boxfriend.Player
         [SerializeField, Range(10,100),Tooltip("Changes how quickly the speed on the speedometer changes")]
         private float _speedAdjustment;
         [SerializeField, Tooltip("The text for the speedometer speed display")]
-        private Text _speedText;
+        private TextMeshProUGUI _speedText;
+        [SerializeField, Tooltip("The amount of time the player has")]
+        private float timerCount = 60f;
+        [SerializeField, Tooltip("The text for the timer")]
+        private TextMeshProUGUI timerText;
+        [SerializeField, Tooltip("The text for the debris count")]
+        private TextMeshProUGUI debrisText;
         //Non-Serialized Fields
-        private int _currHealth, _currDamage, _currSpeed, _score = 0;
+        private int _currHealth, _currDamage, _score = 0;
+        private float _currSpeed;
+        private int debrisCount; //checks how many debris the player collected, increments when the player collects a debris prefab
+        private bool timerIsStarted;
         #endregion
 
         #region Properties
@@ -78,7 +88,7 @@ namespace Boxfriend.Player
         /// Get Player's current movement speed.
         /// This is applied force per frame, not velocity.
         /// </summary>
-        public int Speed
+        public float Speed
         {
             get { return _currSpeed; }
             private set { _currSpeed = Mathf.Clamp(_currSpeed + value, 0, MaxSpeed); }
@@ -133,9 +143,6 @@ namespace Boxfriend.Player
 
         void OnTriggerEnter2D(Collider2D col)
         {
-
-            
-
             var destructible = col.GetComponent<IDestructible>(); //Checks if object is destructible then applies necessary damage
             if (destructible != null)
             {
@@ -147,6 +154,11 @@ namespace Boxfriend.Player
             {
                 Speed = interactable.SpeedChange;
                 Health = interactable.HealthChange;
+                //checks wether the object is a collectable and then increments the debris count and updates the debris text
+                if(col.tag == "Collectable"){
+                debrisCount++;
+                debrisText.text = debrisCount.ToString();
+                }
                 Debug.Log(Health);
             }
 
@@ -191,8 +203,27 @@ namespace Boxfriend.Player
             _windsArrow.transform.rotation = Quaternion.Euler(0, 0, angle);
 
             //Displays the speed on the speed text on the speedometer
-            _speedText.text = $"{(int)Velocity.magnitude * _speedAdjustment} m/h";
+            _speedText.text = $"{(int)(Velocity.magnitude * _speedAdjustment)} m/h";
+
+    //please rewrite
+        #region rewrite
+            if(_rb.velocity.magnitude >= 0.5f){
+                timerIsStarted = true;
+            }
+
+            if(timerIsStarted){
+            timerCount -= Time.deltaTime;
+            timerText.text = $"{(int)timerCount}";
+            }
+
+            if(timerCount <= 0){
+                //Time.timeScale = 0;
+                timerIsStarted = false;
+                GameManager.instance.GameOver();
+                GetComponent<PlayerController>().enabled = false;
+            }
         }
+        #endregion
 
         #endregion
 
@@ -207,7 +238,7 @@ namespace Boxfriend.Player
             Health = damage;
             Debug.Log(Health);
             
-            if (Health <= 0)
+            if (Health < 1)
             {
                 StartCoroutine(Kill());
             }

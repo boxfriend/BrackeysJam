@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using UnityEngine.Audio;
 using Boxfriend.Player;
 
 namespace JuJu {
@@ -12,6 +13,9 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     bool gameIsPaused = false;
 
+        [SerializeField]
+        private AudioMixer _audioMixer;
+
     private void Awake() {
         if(instance == null){
         instance = this;
@@ -20,8 +24,24 @@ public class GameManager : MonoBehaviour
         else{Destroy(gameObject);}
     }
 
+        private void Start()
+        {
+            QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("QualityLevel", 1));
 
-public void EscapePress() { 
+            _audioMixer.SetFloat("MasterVol", AudioLevel(PlayerPrefs.GetFloat("MasterVolume", 0.75f)));
+            _audioMixer.SetFloat("MusicVol", AudioLevel(PlayerPrefs.GetFloat("MusicVolume", 0.75f)));
+            _audioMixer.SetFloat("EffectVol", AudioLevel(PlayerPrefs.GetFloat("EffectVolume", 0.75f)));
+        }
+
+        
+        /// <returns>Slider value converted to Decibels</returns>
+        private float AudioLevel(float v)
+        {
+            return Mathf.Log10(v) * 20;
+        }
+
+
+        public void EscapePress() { 
         if(!gameIsPaused){
             Pause();
         }
@@ -74,6 +94,15 @@ public void GameOver(){
 }
 
 #endregion
+
+public void Settings(){
+    SceneManager.LoadSceneAsync("Settings", LoadSceneMode.Additive);
+    
+}
+
+public void BackToPrevScene(){
+    SceneManager.UnloadSceneAsync("Settings");
+}
 }
 
 

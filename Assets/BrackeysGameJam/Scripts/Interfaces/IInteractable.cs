@@ -6,7 +6,7 @@ namespace Boxfriend
 {
     public interface IInteractable
     {
-        int SpeedChange { get; }
+        float SpeedChange { get; }
 
         int HealthChange { get; }
 

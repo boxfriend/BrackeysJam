@@ -14,20 +14,30 @@ namespace Boxfriend
         [Header("Target Stats"), Space(5)]
         [SerializeField, Range(0, 100), Tooltip("Start health for the target")]
         private int _startHealth;
-
-        [SerializeField]
-        private ObstacleSprite _sprites;
+        [SerializeField, Range(0, 5), Tooltip("Number of points to give to player on hit.")]
+        private int _score;
 
         [SerializeField,Tooltip("Prefab that will be dropped on target death")]
         private GameObject[] _pickupDrop;
 
-        [SerializeField, Range(0, 5), Tooltip("Number of points to give to player on hit.")]
-        private int _score;
+        
         private int _currHealth;
 
         //Components
+        [Header("Components"), Space(5)]
+        [SerializeField]
         private SpriteRenderer _spr;
+        [SerializeField]
         private BoxCollider2D _col;
+        [SerializeField]
+        private Animator _anim;
+        [SerializeField]
+        private AudioSource _audio;
+        [Space(5)]
+        [SerializeField]
+        private AudioClip _damaged;
+        [SerializeField]
+        private AudioClip _destroyed;
         
         #endregion
 
@@ -59,7 +69,7 @@ namespace Boxfriend
         {
             _col.enabled = false;
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.25f);
             if(_pickupDrop != null)
             {
                 foreach (GameObject p in _pickupDrop)
@@ -74,10 +84,14 @@ namespace Boxfriend
         {
             _currHealth -= damage;
 
-
+            _anim.SetFloat("HealthPerc", (float)_currHealth / _startHealth);
             if(_currHealth <= 0)
             {
+                _audio.PlayOneShot(_destroyed);
                 StartCoroutine(Kill());
+            } else
+            {
+                _audio.PlayOneShot(_damaged);
             }
         }
         #endregion
@@ -86,38 +100,15 @@ namespace Boxfriend
 
         private void Awake()
         {
-            _spr = GetComponent<SpriteRenderer>();
-            _col = GetComponent<BoxCollider2D>();
+           
         }
         // Start is called before the first frame update
         void Start()
         {
             _currHealth = _startHealth;
+            _anim.SetFloat("HealthPerc", 1);
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-            //_healthBar.fillAmount = (float)_currHealth / _startHealth;
-
-            if(_currHealth <= 0)
-            {
-                _spr.sprite = _sprites.sprites[4];
-            } else if ((float)_currHealth/_startHealth < 0.5)
-            {
-                _spr.sprite = _sprites.sprites[3];
-            } else if ((float)_currHealth / _startHealth < 0.75)
-            {
-                _spr.sprite = _sprites.sprites[2];
-            }
-            else if ((float)_currHealth / _startHealth != 1)
-            {
-                _spr.sprite = _sprites.sprites[1];
-            } else 
-            {
-                _spr.sprite = _sprites.sprites[0];
-            }
-        }
 
         void OnTriggerEnter2D(Collider2D col)
         {
