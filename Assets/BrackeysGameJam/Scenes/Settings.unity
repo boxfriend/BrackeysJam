@@ -1193,7 +1193,7 @@ MonoBehaviour:
       - m_Target: {fileID: 397557712}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
         m_MethodName: EffectsVolume
-        m_Mode: 4
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1447,7 +1447,7 @@ MonoBehaviour:
       - m_Target: {fileID: 397557712}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
         m_MethodName: MusicVolume
-        m_Mode: 4
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1840,7 +1840,7 @@ MonoBehaviour:
       - m_Target: {fileID: 397557712}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
         m_MethodName: MasterVolume
-        m_Mode: 4
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
