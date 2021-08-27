@@ -134,9 +134,6 @@ namespace Boxfriend.Player
 
         void OnTriggerEnter2D(Collider2D col)
         {
-
-            
-
             var destructible = col.GetComponent<IDestructible>(); //Checks if object is destructible then applies necessary damage
             if (destructible != null)
             {
@@ -208,7 +205,7 @@ namespace Boxfriend.Player
             Health = damage;
             Debug.Log(Health);
             
-            if (Health <= 0)
+            if (Health < 1)
             {
                 StartCoroutine(Kill());
             }

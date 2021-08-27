@@ -517,14 +517,17 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 8f33b5a5c1964b64a84ff016e0df7a63, type: 3}
     volume: 1
     source: {fileID: 0}
+    loop: 0
   - name: UIExit
     clip: {fileID: 8300000, guid: b6ff465346428204a8b6b546235c8b92, type: 3}
     volume: 1
     source: {fileID: 0}
+    loop: 0
   - name: Start
     clip: {fileID: 8300000, guid: 14fe70c2eb33f8a429d519485ac68c70, type: 3}
     volume: 1
     source: {fileID: 0}
+    loop: 0
 --- !u!4 &1043081139
 Transform:
   m_ObjectHideFlags: 0
@@ -833,6 +836,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac147652d2d07e44eb289d0a78408546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _audioMixer: {fileID: 24100000, guid: f848e7c69f581c442879260ed0833316, type: 2}
 --- !u!4 &1852828213
 Transform:
   m_ObjectHideFlags: 0

@@ -25764,6 +25764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac147652d2d07e44eb289d0a78408546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _audioMixer: {fileID: 24100000, guid: f848e7c69f581c442879260ed0833316, type: 2}
 --- !u!4 &699906528
 Transform:
   m_ObjectHideFlags: 0
@@ -32117,7 +32118,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0457413, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
