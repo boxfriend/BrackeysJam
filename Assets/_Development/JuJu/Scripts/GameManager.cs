@@ -94,6 +94,15 @@ public void GameOver(){
 }
 
 #endregion
+
+public void Settings(){
+    SceneManager.LoadSceneAsync("Settings", LoadSceneMode.Additive);
+    
+}
+
+public void BackToPrevScene(){
+    SceneManager.UnloadSceneAsync("Settings");
+}
 }
 
 
