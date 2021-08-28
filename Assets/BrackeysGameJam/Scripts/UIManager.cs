@@ -29,10 +29,10 @@ namespace JuJu{
             GameManager.instance.BackToMainMenu();
         }
 
-        public void PlayLevel(){
+        public void PlayLevel(int levelIndex){
             transition.SetTrigger("Start");
             AudioManager.instance.PlaySound("Start");
-            GameManager.instance.PlayLevel1();
+            GameManager.instance.PlayLevel1(levelIndex);
         }
 
         public void Quit(){
