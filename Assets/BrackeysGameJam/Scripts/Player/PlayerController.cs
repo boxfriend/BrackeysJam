@@ -40,6 +40,8 @@ namespace Boxfriend.Player
         [Header("Player Components"), Space(5)]
         [SerializeField, Tooltip("Player's Rigidbody2D")]
         private Rigidbody2D _rb;
+        [SerializeField, Tooltip("Player's Animator Component")]
+        private Animator _anim;
         [SerializeField, Tooltip("Arrow's Rigidbody2D")]
         private GameObject _windsArrow;
         [SerializeField,Tooltip("Speedometer image")]
@@ -253,6 +255,7 @@ namespace Boxfriend.Player
         public IEnumerator Kill()
         {
             SetState(new PlayerStateDead(_rb));
+            _anim.SetTrigger("Dead");
             yield return null;
         }
         #endregion
