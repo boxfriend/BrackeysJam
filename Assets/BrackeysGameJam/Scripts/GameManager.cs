@@ -78,8 +78,8 @@ public void BackToMainMenu(){
 
 #region MainMenu
 
-public void PlayLevel1(){
-    StartCoroutine(LoadLevel(1));
+public void PlayLevel1(int levelIndex){
+    StartCoroutine(LoadLevel(levelIndex));
     //SceneManager.UnloadSceneAsync("BlankScene");
 }
 
