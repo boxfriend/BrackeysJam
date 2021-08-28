@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e054782fd8d2b64e868cbbf51616aca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speedChange: 5.2
+  _speedChange: 5
   _healthChange: 0
   _collider: {fileID: 5062720630934129594}
   _spriteRenderer: {fileID: 5062720630934129592}
