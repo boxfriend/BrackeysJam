@@ -64,7 +64,7 @@ namespace Boxfriend.Player
         private int _currHealth, _currDamage, _score = 0;
         private float _currSpeed;
         private int debrisCount; //checks how many debris the player collected, increments when the player collects a debris prefab
-        private bool timerIsStarted;
+        public static bool timerIsStarted;
         #endregion
 
         #region Properties
@@ -132,7 +132,7 @@ namespace Boxfriend.Player
 
             Instance = this;
 
-            SetState(new PlayerStateBegin(_rb));
+            SetState(new PlayerStateBegin(_rb)); 
         }
 
         void Start()
@@ -220,10 +220,15 @@ namespace Boxfriend.Player
 
             if(timerCount <= 0){
                 //Time.timeScale = 0;
-                timerIsStarted = false;
-                GameManager.instance.GameOver();
+                StartCoroutine("TimeIsUp");
                 GetComponent<PlayerController>().enabled = false;
             }
+        }
+        IEnumerator TimeIsUp(){
+            _anim.SetTrigger("Dead");
+            timerIsStarted = false;
+            yield return new WaitForSeconds(1);
+            GameManager.instance.GameOver();
         }
         #endregion
 

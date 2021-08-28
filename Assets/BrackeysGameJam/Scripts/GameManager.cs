@@ -56,10 +56,13 @@ public void Pause(){
 #region PauseMenu
 
 public void Resume(){
+    if(!SceneManager.GetSceneByName("Settings").isLoaded){
     gameIsPaused = false;
     PlayerController.Instance.PrevState();
     Time.timeScale = 1;
     SceneManager.UnloadSceneAsync("PauseMenu");
+    }
+    else {SceneManager.UnloadSceneAsync("Settings");}
 }
 
 public void Restart(){
