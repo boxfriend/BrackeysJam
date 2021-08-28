@@ -80,6 +80,7 @@ public void PlayLevel1(){
 }
 
 public IEnumerator LoadLevel(int levelIndex){
+    yield return new WaitForSeconds(0.7f);
     SceneManager.LoadSceneAsync(levelIndex);
     SceneManager.LoadSceneAsync("BlankScene", LoadSceneMode.Additive);
     yield return new WaitForSeconds(0.3f);
