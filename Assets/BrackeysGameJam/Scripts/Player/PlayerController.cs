@@ -55,19 +55,26 @@ namespace Boxfriend.Player
         [SerializeField, Tooltip("The text for the speedometer speed display")]
         private TextMeshProUGUI _speedText;
         [SerializeField, Tooltip("The amount of time the player has")]
-        private float timerCount = 60f;
+        private float _timerCount = 60f;
         [SerializeField, Tooltip("The text for the timer")]
-        private TextMeshProUGUI timerText;
+        private TextMeshProUGUI _timerText;
         [SerializeField, Tooltip("The text for the debris count")]
-        private TextMeshProUGUI debrisText;
+        private TextMeshProUGUI _debrisText;
+
         //Non-Serialized Fields
-        private int _currHealth, _currDamage, _score = 0;
+        private int _currHealth, _currDamage, _score, _debrisCount;
         private float _currSpeed;
-        private int debrisCount; //checks how many debris the player collected, increments when the player collects a debris prefab
-        public static bool timerIsStarted;
         #endregion
 
         #region Properties
+
+        public float Timer
+        {
+            get { return _timerCount; }
+            set { _timerCount = Mathf.Clamp(_timerCount - value, 0, 60); }
+        }
+
+
         /// <summary>
         /// Get Player's current health.
         /// </summary>
@@ -158,8 +165,8 @@ namespace Boxfriend.Player
                 Health = interactable.HealthChange;
                 //checks wether the object is a collectable and then increments the debris count and updates the debris text
                 if(col.tag == "Collectable"){
-                debrisCount++;
-                debrisText.text = debrisCount.ToString();
+                _debrisCount++;
+                _debrisText.text = _debrisCount.ToString();
                 }
                 Debug.Log(Health);
             }
@@ -207,31 +214,10 @@ namespace Boxfriend.Player
             //Displays the speed on the speed text on the speedometer
             _speedText.text = $"{(int)(Velocity.magnitude * _speedAdjustment)} m/h";
 
-    //please rewrite
-        #region rewrite
-            if(_rb.velocity.magnitude >= 0.5f){
-                timerIsStarted = true;
-            }
-
-            if(timerIsStarted){
-            timerCount -= Time.deltaTime;
-            timerText.text = $"{(int)timerCount}";
-            }
-
-            if(timerCount <= 0){
-                //Time.timeScale = 0;
-                StartCoroutine("TimeIsUp");
-                GetComponent<PlayerController>().enabled = false;
-            }
+            _timerText.text = $"{(int)_timerCount}";
+            
+            
         }
-        IEnumerator TimeIsUp(){
-            _anim.SetTrigger("Dead");
-            timerIsStarted = false;
-            yield return new WaitForSeconds(1);
-            GameManager.instance.GameOver();
-        }
-        #endregion
-
         #endregion
 
         #region IDestructable
