@@ -69,7 +69,7 @@ namespace Boxfriend
         {
             _col.enabled = false;
 
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(0.5f);
             if(_pickupDrop != null)
             {
                 foreach (GameObject p in _pickupDrop)

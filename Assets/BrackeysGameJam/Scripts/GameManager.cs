@@ -78,16 +78,18 @@ public void BackToMainMenu(){
 
 #region MainMenu
 
-public void PlayLevel1(){
-    StartCoroutine(LoadLevel(1));
+public void PlayLevel1(int levelIndex){
+    StartCoroutine(LoadLevel(levelIndex));
+    //SceneManager.UnloadSceneAsync("BlankScene");
 }
 
 public IEnumerator LoadLevel(int levelIndex){
-    yield return new WaitForSeconds(0.7f);
-    SceneManager.LoadSceneAsync(levelIndex);
-    SceneManager.LoadSceneAsync("BlankScene", LoadSceneMode.Additive);
-    yield return new WaitForSeconds(0.3f);
-    SceneManager.UnloadSceneAsync("BlankScene");
+    yield return new WaitForSeconds(0.9f);
+    //SceneManager.LoadSceneAsync(5, LoadSceneMode.Additive);
+    SceneManager.LoadScene(levelIndex);
+    //yield return new WaitForSeconds(1);
+    //SceneManager.UnloadSceneAsync(5);
+    
 }
 #endregion
 

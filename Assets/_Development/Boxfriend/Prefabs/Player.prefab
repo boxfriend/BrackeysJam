@@ -196,12 +196,16 @@ MonoBehaviour:
   _maxSpeed: 10
   speed: 0
   _rb: {fileID: 6673292795207681475}
+  _anim: {fileID: 0}
   _windsArrow: {fileID: 0}
   _speedometer: {fileID: 0}
   _scoreText: {fileID: 0}
   _tr: {fileID: 8098577070099421751}
   _speedAdjustment: 0
   _speedText: {fileID: 0}
+  _timerCount: 60
+  _timerText: {fileID: 0}
+  _debrisText: {fileID: 0}
 --- !u!96 &8098577070099421751
 TrailRenderer:
   serializedVersion: 2

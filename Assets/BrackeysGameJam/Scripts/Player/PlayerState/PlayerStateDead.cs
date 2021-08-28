@@ -29,7 +29,6 @@ namespace Boxfriend.Player
             try
             {
                 GameManager.instance.GameOver();
-                PlayerController.timerIsStarted = false;
             }
             catch (System.NullReferenceException)
             {
