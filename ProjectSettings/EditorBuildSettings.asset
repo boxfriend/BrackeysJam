@@ -33,6 +33,9 @@ EditorBuildSettings:
     path: Assets/BrackeysGameJam/Scenes/Levels/RTLevel03 Maze.unity
     guid: 3860b3f002b22451c89201b8cb6b6cf5
   - enabled: 1
+    path: Assets/BrackeysGameJam/Scenes/Levels/RTLevel03 Maze.unity
+    guid: 3860b3f002b22451c89201b8cb6b6cf5
+  - enabled: 1
     path: Assets/BrackeysGameJam/Scenes/Levels/Box-Level2.unity
     guid: c74de5b5edc5cf6438822c04f6808a27
   - enabled: 1
@@ -45,4 +48,5 @@ EditorBuildSettings:
     path: Assets/BrackeysGameJam/Scenes/Settings.unity
     guid: 9bd5bfeef2edc7345af80afcf036a2c2
   m_configObjects:
-    com.unity.input.settings: {fileID: 11400000, guid: 7c2ce754be652644994bf9e068d51f47, type: 2}
+    com.unity.input.settings: {fileID: 11400000, guid: 7c2ce754be652644994bf9e068d51f47,
+      type: 2}
