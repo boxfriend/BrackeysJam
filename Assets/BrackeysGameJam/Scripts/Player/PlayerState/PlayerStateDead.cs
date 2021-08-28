@@ -25,9 +25,11 @@ namespace Boxfriend.Player
 
         public override IEnumerator StartState()
         {
+            
             try
             {
                 GameManager.instance.GameOver();
+                PlayerController.timerIsStarted = false;
             }
             catch (System.NullReferenceException)
             {
