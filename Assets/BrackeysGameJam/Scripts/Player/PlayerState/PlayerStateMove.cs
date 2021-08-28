@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using JuJu;
 
 namespace Boxfriend.Player
 {
@@ -24,6 +23,13 @@ namespace Boxfriend.Player
             {
                 Debug.Log("too slow!");
                 //PlayerController.Instance.SetState(new PlayerStatePause(_rb));
+                PlayerController.Instance.Kill(true);
+            }
+
+            PlayerController.Instance.Timer = Time.deltaTime;
+
+            if (PlayerController.Instance.Timer <= 0)
+            {
                 PlayerController.Instance.Kill(true);
             }
         }

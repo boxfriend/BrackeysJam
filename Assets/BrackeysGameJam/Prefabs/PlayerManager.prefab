@@ -168,7 +168,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3108657892235185084}
     - target: {fileID: 45149327583967811, guid: a60cb008ad6379f468c89b5d4dadccb8, type: 3}
+      propertyPath: _timerText
+      value: 
+      objectReference: {fileID: 4507324896302875489}
+    - target: {fileID: 45149327583967811, guid: a60cb008ad6379f468c89b5d4dadccb8, type: 3}
       propertyPath: debrisText
+      value: 
+      objectReference: {fileID: 8975406660242633423}
+    - target: {fileID: 45149327583967811, guid: a60cb008ad6379f468c89b5d4dadccb8, type: 3}
+      propertyPath: _debrisText
       value: 
       objectReference: {fileID: 8975406660242633423}
     - target: {fileID: 45149327583967811, guid: a60cb008ad6379f468c89b5d4dadccb8, type: 3}
