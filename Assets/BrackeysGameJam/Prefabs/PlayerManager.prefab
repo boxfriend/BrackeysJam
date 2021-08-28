@@ -82,21 +82,30 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 1
+        time: 0.011173248
+        value: 0.5031452
         inSlope: 0
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 0.5, g: 0.15283276, b: 0, a: 1}
+      key1: {r: 0.5754717, g: 0.35899717, b: 0.28502136, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -141,7 +150,7 @@ PrefabInstance:
     - target: {fileID: 45149327583967811, guid: a60cb008ad6379f468c89b5d4dadccb8, type: 3}
       propertyPath: _tr
       value: 
-      objectReference: {fileID: 1794857954643454766, guid: f62a077df9a36e54c9bb24de720dd0ec, type: 3}
+      objectReference: {fileID: 71565307}
     - target: {fileID: 45149327583967811, guid: a60cb008ad6379f468c89b5d4dadccb8, type: 3}
       propertyPath: timerText
       value: 
