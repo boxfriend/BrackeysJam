@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: WaterBLC
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: 21300000, guid: 7825c274857d447d9be0a94923fb986a, type: 3}
+  - {fileID: 21300000, guid: dc80e9171599c4395ad3e91019e51aeb, type: 3}
+  - {fileID: 21300000, guid: 8420132e00b4a4ab69a0ccc6a0a4a36e, type: 3}
+  - {fileID: 21300000, guid: 67fee7eefaf4847959e925732d555984, type: 3}
+  - {fileID: 21300000, guid: c828f9ba2f9d54ca2be23205d0d074c4, type: 3}
+  - {fileID: 21300000, guid: 3806f2a99f5b34c57856cbfb99051c49, type: 3}
+  - {fileID: 21300000, guid: de691b5b4c3dd491a9a2b68aeb2c1552, type: 3}
+  m_MinSpeed: 12
+  m_MaxSpeed: 12
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0

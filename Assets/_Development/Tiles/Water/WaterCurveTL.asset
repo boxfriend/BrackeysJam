@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: WaterCurveTL
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: 21300000, guid: 666467c50d7f0409382eeb852d9de911, type: 3}
+  - {fileID: 21300000, guid: 05bee500e320c42f5a8f596254b9f672, type: 3}
+  - {fileID: 21300000, guid: 6d7ffb214142a4650b25c96a7d24f1b5, type: 3}
+  - {fileID: 21300000, guid: 4494c0781f23b46668366395b8926cbe, type: 3}
+  - {fileID: 21300000, guid: 8509008015584473299c8fc5835e3055, type: 3}
+  - {fileID: 21300000, guid: cd7b5cfd37f4942b2b60a93a73731c42, type: 3}
+  - {fileID: 21300000, guid: 8ff50d07f302d4861920eed53947cb3d, type: 3}
+  m_MinSpeed: 12
+  m_MaxSpeed: 12
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0

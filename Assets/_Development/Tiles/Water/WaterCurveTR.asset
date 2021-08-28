@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: WaterCurveTR
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: 21300000, guid: 0e4cb10d29e7f481da038bb1f5e984b8, type: 3}
+  - {fileID: 21300000, guid: c40c212d644c94ce898e61052d69ae56, type: 3}
+  - {fileID: 21300000, guid: 0d201b5fcfe424c78be825a3f59e8eac, type: 3}
+  - {fileID: 21300000, guid: aead54596e3ad42c0ba5da2d3f4dbf19, type: 3}
+  - {fileID: 21300000, guid: 0b1cc4c9520aa48f4a12d83b6027d741, type: 3}
+  - {fileID: 21300000, guid: d451e7735eb8c400a9ee503673c86d53, type: 3}
+  - {fileID: 21300000, guid: 0f94726349e014bf2976263ccc5cd1d5, type: 3}
+  m_MinSpeed: 12
+  m_MaxSpeed: 12
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
