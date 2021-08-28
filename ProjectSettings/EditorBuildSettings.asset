@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/BrackeysGameJam/Scenes/MainMenu.unity
     guid: 05b071af40e1586499e2e47b29d97b43
   - enabled: 1
-    path: Assets/_Development/JuJu/Level01.unity
+    path: Assets/BrackeysGameJam/Scenes/Level01.unity
     guid: 04a266a66ba9dde4d99ea5dda0bdc85e
   - enabled: 0
     path: Assets/_Development/JuJu/TestingScene.unity
