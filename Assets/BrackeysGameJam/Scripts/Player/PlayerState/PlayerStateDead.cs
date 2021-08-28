@@ -34,6 +34,7 @@ namespace Boxfriend.Player
             {
                 Debug.LogWarning("Game Manager not active in hierarchy");
             }
+            _rb.velocity = Vector2.zero;
             return base.StartState();
         }
 

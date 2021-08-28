@@ -64,16 +64,27 @@ namespace Boxfriend.Player
         //Non-Serialized Fields
         private int _currHealth, _currDamage, _score, _debrisCount;
         private float _currSpeed;
+
+        private string _deathStr;
         #endregion
 
         #region Properties
 
+        public string DeathString
+        {
+            get { return _deathStr; }
+            set { _deathStr = value; }
+        }
+
+
+        /// <summary>
+        /// Get current level timer
+        /// </summary>
         public float Timer
         {
             get { return _timerCount; }
             set { _timerCount = Mathf.Clamp(_timerCount - value, 0, 60); }
         }
-
 
         /// <summary>
         /// Get Player's current health.
@@ -162,13 +173,12 @@ namespace Boxfriend.Player
             if(interactable != null)
             {
                 Speed = interactable.SpeedChange;
-                Health = interactable.HealthChange;
+                TakeDamage(interactable.HealthChange);
                 //checks wether the object is a collectable and then increments the debris count and updates the debris text
-                if(col.tag == "Collectable"){
+                if(col.CompareTag("Collectable")){
                 _debrisCount++;
                 _debrisText.text = _debrisCount.ToString();
                 }
-                Debug.Log(Health);
             }
 
             var scorable = col.GetComponent<IScorable>();
@@ -192,7 +202,7 @@ namespace Boxfriend.Player
             if (interactable != null)
             {
                 Speed = interactable.SpeedChange;
-                Health = interactable.HealthChange;
+                TakeDamage(interactable.HealthChange);
                 Debug.Log(Health);
             }
         }
@@ -231,9 +241,11 @@ namespace Boxfriend.Player
             Health = damage;
             Debug.Log(Health);
             
-            if (Health < 1)
+            if (_currHealth < 1)
             {
+                DeathString = "You got too small";
                 StartCoroutine(Kill());
+                //Kill(true);
             }
 
         }

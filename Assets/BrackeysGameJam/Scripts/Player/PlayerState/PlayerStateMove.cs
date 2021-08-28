@@ -22,7 +22,7 @@ namespace Boxfriend.Player
             if (_rb.velocity.magnitude < 0.4)
             {
                 Debug.Log("too slow!");
-                //PlayerController.Instance.SetState(new PlayerStatePause(_rb));
+                PlayerController.Instance.DeathString = "You were too slow";
                 PlayerController.Instance.Kill(true);
             }
 
@@ -30,6 +30,7 @@ namespace Boxfriend.Player
 
             if (PlayerController.Instance.Timer <= 0)
             {
+                PlayerController.Instance.DeathString = "You ran out of time";
                 PlayerController.Instance.Kill(true);
             }
         }
