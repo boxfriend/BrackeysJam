@@ -30,7 +30,7 @@ namespace Boxfriend.Player
 
             if (PlayerController.Instance.Timer <= 0)
             {
-                PlayerController.Instance.DeathString = "You ran out of time";
+                PlayerController.Instance.DeathString = "Time's up! How did you do?";
                 PlayerController.Instance.Kill(true);
             }
         }
