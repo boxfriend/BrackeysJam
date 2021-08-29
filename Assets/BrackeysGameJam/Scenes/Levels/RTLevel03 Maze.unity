@@ -1576,7 +1576,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7784201, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -13470,6 +13470,18 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[391].second.m_TileObjectToInstantiateIndex
       value: 65535
       objectReference: {fileID: 0}
+    - target: {fileID: 2394862968658649906, guid: 13b470ba602b14f64ab1ae4ba21c812a, type: 3}
+      propertyPath: m_SortingLayer
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394862968658649906, guid: 13b470ba602b14f64ab1ae4ba21c812a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394862968658649906, guid: 13b470ba602b14f64ab1ae4ba21c812a, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 279964805
+      objectReference: {fileID: 0}
     - target: {fileID: 3018507867911195334, guid: 13b470ba602b14f64ab1ae4ba21c812a, type: 3}
       propertyPath: m_Size.x
       value: 26
@@ -14612,7 +14624,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3018507867911195334, guid: 13b470ba602b14f64ab1ae4ba21c812a, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[5].second.m_AnimationSpeed
-      value: 12.000001
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3018507867911195334, guid: 13b470ba602b14f64ab1ae4ba21c812a, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[6].second.m_AnimationSpeed
@@ -14620,11 +14632,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3018507867911195334, guid: 13b470ba602b14f64ab1ae4ba21c812a, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[7].second.m_AnimationSpeed
-      value: 12
+      value: 12.000001
       objectReference: {fileID: 0}
     - target: {fileID: 3018507867911195334, guid: 13b470ba602b14f64ab1ae4ba21c812a, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[8].second.m_AnimationSpeed
-      value: 12
+      value: 12.000001
       objectReference: {fileID: 0}
     - target: {fileID: 3018507867911195334, guid: 13b470ba602b14f64ab1ae4ba21c812a, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[9].second.m_AnimationSpeed
